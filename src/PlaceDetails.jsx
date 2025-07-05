@@ -19,6 +19,8 @@ import { Star } from '@mui/icons-material';
 export default function PlaceDetails() {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const API = 'https://syria-backend.onrender.com';
+
   const [card, setCard] = useState(null);
   const [commentText, setCommentText] = useState('');
   const [ratingValue, setRatingValue] = useState(0);
@@ -28,7 +30,7 @@ export default function PlaceDetails() {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/cards/${slug}`)
+fetch(`${API}/api/cards/${slug}`)
       .then(res => res.json())
       .then(setCard)
       .catch(err => console.error(err));
@@ -37,7 +39,7 @@ export default function PlaceDetails() {
   const handleAddComment = async () => {
     if (!commentText.trim()) return;
 
-    await fetch(`http://localhost:5000/api/cards/${card._id}/comments`, {
+await fetch(`${API}/api/cards/${card._id}/comments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -53,7 +55,7 @@ export default function PlaceDetails() {
   const handleAddRating = async () => {
     if (!ratingValue) return;
 
-    await fetch(`http://localhost:5000/api/cards/${card._id}/rate`, {
+await fetch(`${API}/api/cards/${card._id}/rate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

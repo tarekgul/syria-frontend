@@ -50,6 +50,7 @@ function PlanTripPage() {
   const [manualDay, setManualDay] = useState(1);
   const [selectedManualCard, setSelectedManualCard] = useState('');
 const [manualDaysCount, setManualDaysCount] = useState(1);
+const API = 'https://syria-backend.onrender.com';
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -59,9 +60,10 @@ const [manualDaysCount, setManualDaysCount] = useState(1);
   }, [images.length]);
 
   useEffect(() => {
-    fetch('/api/provinces').then(res => res.json()).then(setProvinces);
-    fetch('/api/categories').then(res => res.json()).then(setCategories);
-    fetch('/api/cards').then(res => res.json()).then(setCards);
+fetch(`${API}/api/provinces`).then(res => res.json()).then(setProvinces);
+fetch(`${API}/api/categories`).then(res => res.json()).then(setCategories);
+fetch(`${API}/api/cards`).then(res => res.json()).then(setCards);
+
   }, []);
 
   const handleLogout = () => {
@@ -175,7 +177,7 @@ const [manualDaysCount, setManualDaysCount] = useState(1);
 
   try {
     const token = localStorage.getItem('token');
-    const res = await fetch('/api/plans/save-plan', {
+const res = await fetch(`${API}/api/plans/save-plan`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

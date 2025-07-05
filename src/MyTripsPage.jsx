@@ -36,10 +36,13 @@ export default function MyTripsPage() {
 
   const handleOpen = (e) => setAnchorEl(e.currentTarget);
   const handleClose = () => setAnchorEl(null);
+const API = 'https://syria-backend.onrender.com';
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/provinces').then(r => r.json()).then(setProvinces);
-    fetch('http://localhost:5000/api/categories').then(r => r.json()).then(setCategories);
+   fetch(`${API}/api/provinces`)
+.then(r => r.json()).then(setProvinces);
+    fetch(`${API}/api/categories`)
+.then(r => r.json()).then(setCategories);
   }, []);
 
   useEffect(() => {
@@ -53,7 +56,7 @@ export default function MyTripsPage() {
     const fetchPlans = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await fetch('/api/plans/my-plans', {
+const res = await fetch(`${API}/api/plans/my-plans`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
