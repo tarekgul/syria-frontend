@@ -37,40 +37,43 @@ export default function DiscoverPage() {
   const [selectedProvince, setSelectedProvince] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [bgIndex, setBgIndex] = useState(0);
+const API = 'https://syria-backend.onrender.com';
 
   const navigate = useNavigate();
   const location = useLocation();
   const images = [bg1, bg2, bg3];
 
-  useEffect(() => {
-    fetch('http://localhost:5000/api/provinces').then(res => res.json()).then(setProvinces);
-    fetch('http://localhost:5000/api/categories').then(res => res.json()).then(setCategories);
-  }, []);
+useEffect(() => {
+  fetch(`${API}/api/provinces`).then(res => res.json()).then(setProvinces);
+  fetch(`${API}/api/categories`).then(res => res.json()).then(setCategories);
+}, []);
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const province = params.get('province') || '';
-    const category = params.get('category') || '';
-    const search = params.get('search') || '';
 
-    setSelectedProvince(province);
-    setSelectedCategory(category);
+useEffect(() => {
+  const params = new URLSearchParams(location.search);
+  const province = params.get('province') || '';
+  const category = params.get('category') || '';
+  const search = params.get('search') || '';
 
-    let url = 'http://localhost:5000/api/cards';
+  setSelectedProvince(province);
+  setSelectedCategory(category);
 
-    if (search) {
-      url += `?search=${encodeURIComponent(search)}`;
-    } else if (province || category) {
-      const query = new URLSearchParams();
-      if (province) query.append('province', province);
-      if (category) query.append('category', category);
-      url += `/filter?${query.toString()}`;
-    }
+  let url = `${API}/api/cards`;
 
-    fetch(url)
-      .then(res => res.json())
-      .then(setCards);
-  }, [location.search]);
+  if (search) {
+    url += `?search=${encodeURIComponent(search)}`;
+  } else if (province || category) {
+    const query = new URLSearchParams();
+    if (province) query.append('province', province);
+    if (category) query.append('category', category);
+    url += `/filter?${query.toString()}`;
+  }
+
+  fetch(url)
+    .then(res => res.json())
+    .then(setCards);
+}, [location.search]);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
