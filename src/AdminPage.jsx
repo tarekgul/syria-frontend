@@ -16,9 +16,12 @@ function AdminPage() {
   });
 
   useEffect(() => {
-    fetch('/api/provinces').then(res => res.json()).then(setProvinces);
-    fetch('/api/categories').then(res => res.json()).then(setCategories);
-    fetch('/api/cards').then(res => res.json()).then(setCards);
+   fetch('https://syria-backend.onrender.com/api/provinces')
+.then(res => res.json()).then(setProvinces);
+   fetch('https://syria-backend.onrender.com/api/categories')
+.then(res => res.json()).then(setCategories);
+   fetch('https://syria-backend.onrender.com/api/cards')
+.then(res => res.json()).then(setCards);
   }, []);
 
   const handleChange = (setFunc, field, value) => setFunc(prev => ({ ...prev, [field]: value }));
