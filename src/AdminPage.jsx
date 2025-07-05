@@ -61,7 +61,7 @@ function AdminPage() {
               <TextField label="الوصف" value={provinceForm.description} onChange={e => handleChange(setProvinceForm, 'description', e.target.value)} fullWidth multiline rows={3} />
             </Grid>
             <Grid item xs={12}>
-              <Button variant="contained" onClick={() => handleSubmit('/api/provinces', provinceForm, () => setProvinceForm({ name: '', image: '', description: '' }))}>➕ إضافة</Button>
+              <Button variant="contained" onClick={() => handleSubmit('https://syria-backend.onrender.com/api/provinces', provinceForm, () => setProvinceForm({ name: '', image: '', description: '' }))}>➕ إضافة</Button>
             </Grid>
           </Grid>
         </Box>
@@ -75,7 +75,7 @@ function AdminPage() {
               <TextField label="الاسم" value={categoryForm.name} onChange={e => handleChange(setCategoryForm, 'name', e.target.value)} fullWidth />
             </Grid>
             <Grid item xs={12}>
-              <Button variant="contained" onClick={() => handleSubmit('/api/categories', categoryForm, () => setCategoryForm({ name: '' }))}>➕ إضافة</Button>
+              <Button variant="contained" onClick={() => handleSubmit('https://syria-backend.onrender.com/api/categories', categoryForm, () => setCategoryForm({ name: '' }))}>➕ إضافة</Button>
             </Grid>
           </Grid>
         </Box>
@@ -122,7 +122,7 @@ function AdminPage() {
               <TextField label="خط الطول (Longitude)" value={cardForm.lng} onChange={e => handleChange(setCardForm, 'lng', e.target.value)} fullWidth />
             </Grid>
             <Grid item xs={12}>
-              <Button variant="contained" onClick={() => handleSubmit('/api/cards', {
+              <Button variant="contained" onClick={() => handleSubmit('https://syria-backend.onrender.com/api/cards', {
                 ...cardForm,
                 lat: parseFloat(cardForm.lat),
                 lng: parseFloat(cardForm.lng),
