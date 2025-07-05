@@ -44,8 +44,10 @@ export default function HomePage() {
   }, [images.length]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/provinces').then(r => r.json()).then(setProvinces);
-    fetch('http://localhost:5000/api/categories').then(r => r.json()).then(setCategories);
+   fetch('https://syria-backend.onrender.com/api/provinces')
+.then(r => r.json()).then(setProvinces);
+   fetch('https://syria-backend.onrender.com/api/categories')
+.then(r => r.json()).then(setCategories);
   }, []);
 
 const handleSelectProvince = (provinceName) => {
@@ -69,8 +71,9 @@ const handleSelectProvince = (provinceName) => {
     if (value.trim()) {
       try {
         const [cardsRes, provincesRes] = await Promise.all([
-          fetch(`http://localhost:5000/api/cards?search=${encodeURIComponent(value)}`),
-          fetch(`http://localhost:5000/api/provinces?search=${encodeURIComponent(value)}`)
+fetch(`https://syria-backend.onrender.com/api/cards?search=${encodeURIComponent(value)}`),
+fetch(`https://syria-backend.onrender.com/api/provinces?search=${encodeURIComponent(value)}`)
+
         ]);
 
         const [cardsData, provincesData] = await Promise.all([
