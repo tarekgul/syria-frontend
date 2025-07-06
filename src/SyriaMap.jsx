@@ -3,7 +3,6 @@ import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import syria from "./syria.json";
 
 export default function SyriaMap({ provinces = [], onSelect }) {
-  // استخرج أسماء المحافظات المفعّلة من قاعدة البيانات
   const activeProvinceNames = provinces.map(p => p.name.trim());
 
   return (

@@ -12,19 +12,19 @@ import bg2 from './images/bg2.jpg';
 import bg3 from './images/bg3.jpg';
 const selectSX = {
   '& .MuiOutlinedInput-root': {
-    height: 72,              // ارتفاع الحقل
-    padding: 0,              // لإلغاء البادينج الافتراضي
+    height: 72,           
+    padding: 0,             
   },
   '& .MuiSelect-select': {
     display: 'flex',
     alignItems: 'center',
-    padding: '0 16px',       // حشوة نصية أفقية
-    fontSize: '1.2rem',      // حجم الخط داخل الاختيار
-    height: '100%',          // ليمتد للارتفاع الكامل
+    padding: '0 16px',       
+    fontSize: '1.2rem',      
+    height: '100%',         
   },
   '& .MuiInputLabel-root': {
-    fontSize: '1.2rem',      // حجم خطّ اللابل
-    top: '-6px',             // ضبط الارتفاع للّابل
+    fontSize: '1.2rem',      
+    top: '-6px',            
   },
 };
 
@@ -99,7 +99,7 @@ const handleLogout = () => {
 
   return (
     <>
-      {/* الخلفية المغبشة */}
+      
       <Box
         sx={{
           position: 'fixed',
@@ -116,7 +116,7 @@ const handleLogout = () => {
         }}
       />
 
-      {/* شريط علوي */}
+      
 <AppBar
   position="fixed"
   sx={{
@@ -207,7 +207,7 @@ const handleLogout = () => {
 </Menu>
 
 
-      {/* المحتوى */}
+     
 <Container sx={{ py: 4, position: 'relative', zIndex: 1, mt: 10 }}>
         <Typography variant="h4" gutterBottom color="#fff">استكشف الوجهات</Typography>
 
@@ -223,14 +223,12 @@ const handleLogout = () => {
              const p = new URLSearchParams(location.search);
              if (prov) p.set('province', prov);
              else p.delete('province');
-             // ضيف الباراميتر الثاني (category) إذا موجود
+             
              navigate(`/discover?${p.toString()}`);
            }}
                       SelectProps={{
-               // هذا هو المفتاح لإظهار الـ MenuItem ذات القيمة الفارغة
                displayEmpty: true
              }}
-             // هذا يتأكد من أن اللابل يطفو لأعلى في كل الأحوال
              InputLabelProps={{ shrink: true }}
            sx={selectSX}
          >

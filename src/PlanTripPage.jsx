@@ -206,7 +206,6 @@ const handleClose = () => setAnchorEl(null);
 
   return (
     <>
-      {/* خلفية الصفحة */}
       <Box
         sx={{
           position: 'fixed',
@@ -223,7 +222,6 @@ const handleClose = () => setAnchorEl(null);
         }}
       />
 
-      {/* الشريط العلوي */}
 <AppBar position="fixed" sx={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
   <Toolbar>
     <Typography variant="h6" sx={{ flexGrow: 2 }}>زور سوريا</Typography>
@@ -300,10 +298,9 @@ const handleClose = () => setAnchorEl(null);
 </Menu>
 
 
-      {/* محتوى الصفحة */}
 <Container dir="rtl" sx={{ py: 4, position: 'relative', zIndex: 1, mt: 10, backgroundColor: 'rgba(255,255,255,0.9)', borderRadius: 4, textAlign: 'right' }}>
         <Typography variant="h4" align="center" gutterBottom>
-          🧭 خطط رحلتك
+           خطط رحلتك
         </Typography>
 
         <FormControl component="fieldset" sx={{ my: 2 }}>
@@ -388,7 +385,7 @@ const handleClose = () => setAnchorEl(null);
     onClick={() => savePlan(plan, 'auto')}
     sx={{ mt: 3 }}
   >
-    💾 حفظ الخطة
+     حفظ الخطة
   </Button>
 )}
 
@@ -408,7 +405,6 @@ const handleClose = () => setAnchorEl(null);
           </>
         ) : (
           <>
-{/* اختيار عدد الأيام مع أزرار + و - */}
 <Grid container spacing={1} alignItems="center" sx={{ my: 2 }}>
   <Grid item xs={8} md={4}>
     <TextField
@@ -454,7 +450,6 @@ const handleClose = () => setAnchorEl(null);
   </Grid>
 </Grid>
 
-{/* اختيار اليوم والبطاقة وزر الإضافة */}
 <Grid container spacing={2} alignItems="center" sx={{ my: 2 }}>
   <Grid item xs={12} md={4}>
     <FormControl fullWidth>
@@ -505,7 +500,7 @@ const handleClose = () => setAnchorEl(null);
     onClick={() => savePlan(manualPlan, 'manual')}
     sx={{ mt: 3 }}
   >
-    💾 حفظ الخطة
+     حفظ الخطة
   </Button>
 )}
 
